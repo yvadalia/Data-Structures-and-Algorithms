@@ -45,21 +45,14 @@ class BinarySearchTree:
 
     def findkey(self, node, key):
         #Search key from node        
-        currentnode = node
-        leftcount = 0
-        rightcount = 0
-        while currentnode:
-            if key == currentnode.key:
-                print(currentnode.key, leftcount, rightcount)
-                return currentnode
-            elif key < currentnode.key:
-                currentnode = currentnode.left
-                leftcount = leftcount + 1
-            else:
-                currentnode = currentnode.right
-                rightcount = rightcount + 1
-        print("didnt find")
-        return None
+        if None == node or key == node.key:
+            #print(currentnode.key, leftcount, rightcount)
+            return node
+        elif key < node.key:
+            return self.findkey(node.left, key)
+        else:
+            return self.findkey(node.right, key)
+        
     def search(self, key):
         return self.findkey(self.root, key)
         
